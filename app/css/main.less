@@ -6,6 +6,17 @@ html, body {
     #map {
     height: 100%;
 }
+.logo {
+    background: url('../images/potatoes.png') no-repeat center;
+    background-size: cover;
+    width: 170px;
+    height: 80px;
+    position: absolute;
+    z-index: 99;
+    bottom: 10vh;
+    left: 5px;
+    z-index: 1;
+}
 .sc-player {
     position: absolute;
     bottom: 0;
@@ -17,6 +28,8 @@ html, body {
     height: 10vh;
     background: #ccc;
     transition: all 250ms ease;
+    z-index: 2;
+
     &:hover, &:active {
         height: 50vh;
     }
