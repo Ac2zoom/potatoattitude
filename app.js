@@ -35,7 +35,8 @@ app.use('/static', express.static('app'));
 
 
 app.post('/post_location', function(req, res) {
-  model.create(req.body, function(err, entity) {
+  document = {song: req.body.song, artist: req.body.artist}
+  model.create(document, function(err, entity) {
       if (err) return handleRpcError(err, res);
       res.json(entity);
     });
