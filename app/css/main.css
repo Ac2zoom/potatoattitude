@@ -1,1 +1,1 @@
-html,body{height:100%;margin:0;padding:0}#map{height:100%}.sc-player{position:absolute;bottom:0;right:0;left:0;margin:auto;display:block;width:100vw;height:10vh;background:#ccc}
+html,body{height:100%;margin:0;padding:0}#map{height:100%}.sc-player{position:absolute;bottom:0;right:0;left:0;margin:auto;display:block;width:100vw;height:10vh;background:#ccc;transition:all 250ms ease}.sc-player:hover,.sc-player:active{height:50vh}

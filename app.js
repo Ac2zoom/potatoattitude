@@ -30,6 +30,8 @@ app.use('/api', require('./api')(model));
 app.get('/', function(req, res) {
   res.render('hello', "index.html");
 });
+app.use('/static', express.static('app'));
+
 
 app.post('/post_location', function(req, res) {
   model.create(req.body, function(err, entity) {
