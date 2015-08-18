@@ -29,6 +29,9 @@ app.get('/', function(req, res) {
 });
 // [END hello_world]
 
+app.post('/current_location', function(req, res) {
+  
+
 // [START server]
 /* Start the server */
 var server = app.listen(process.env.PORT || '8080', '0.0.0.0', function() {
