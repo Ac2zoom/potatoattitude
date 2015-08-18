@@ -35,7 +35,6 @@ function initMap() {
           infoWindow.setPosition(pos);
           infoWindow.setContent("<form action='http://0.0.0.0:8080/post_location' method='POST'>Radius:<br><input type='text' name='radius' value='0'><br>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>");
           map.setCenter(pos);
-          $.post("/current_location", {location: pos});
         }, function() {
           handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -48,7 +47,6 @@ function initMap() {
           infoWindow.setPosition(pos);
           infoWindow.setContent("<form action='http://0.0.0.0:8080/post_location' method='POST'>Radius:<br><input type='text' name='radius' value='0'><br>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>");
           map.setCenter(pos);
-          $.post("/current_location", {location: pos});
         }, function() {
           handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -56,7 +54,6 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
       }
-      infoWindow.setPosition(pos);
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

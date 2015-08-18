@@ -14,6 +14,8 @@
 */
 "use strict";
 
+var config = require('./config');
+
 var cons = require('consolidate');
 
 var express = require('express');
@@ -24,8 +26,19 @@ app.engine('html', cons.swig);
 
 app.use(require('./lib/appengine-handlers'));
 
-var model = "./model-mongodb";
+var model = require("./model-mongodb")(config);
 app.use('/api', require('./api')(model));
+
+function create(data, cb) {
+    model.getCollection(function(err, collection) {
+      if (err) return cb(err);
+      collection.insert(data, {w: 1}, function(err, result) {
+        if (err) return cb(err);
+        var item = model.fromMongo(result.ops);
+        cb(null, item);
+      });
+    });
+  }
 
 app.get('/', function(req, res) {
   // res.render('hello', "index.html");
@@ -35,8 +48,9 @@ app.use('/static', express.static('app'));
 
 
 app.post('/post_location', function(req, res) {
-  document = {song: req.body.song, artist: req.body.artist}
-  model.create(document, function(err, entity) {
+  console.log(req);
+  //document = {song: req.body.song, artist: req.body.artist}
+  create(null, function(err, entity) {
       if (err) return handleRpcError(err, res);
       res.json(entity);
     });

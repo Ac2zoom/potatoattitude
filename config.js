@@ -41,7 +41,7 @@ module.exports = {
   },
 
   mongodb: {
-    url: 'mongodb://23.251.148.58:27017/mydb',
+    url: 'mongodb://104.197.123.79:27017/mydb',
     collection: 'books'
   }
 };

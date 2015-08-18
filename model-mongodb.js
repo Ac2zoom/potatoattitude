@@ -129,11 +129,13 @@ module.exports = function(config) {
   }
 
   return {
+    getCollection: getCollection,
     create: create,
     read: read,
     update: update,
     delete: _delete,
-    list: list
+    list: list,
+    fromMongo: fromMongo
   };
 
 };
