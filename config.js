@@ -31,7 +31,7 @@ module.exports = {
     This is the id of your project in the Google Developers Console.
   */
   gcloud: {
-    projectId: 'lyrical-bus-104117'
+    projectId: 'potatoeswithattitude'
   },
 
   mysql: {
@@ -41,7 +41,7 @@ module.exports = {
   },
 
   mongodb: {
-    url: 'mongodb://104.197.123.79:27017/mydb',
-    collection: 'books'
+    url: ' mongodb://user:password@ds033113.mongolab.com:33113/main',
+    collection: 'songs'
   }
 };

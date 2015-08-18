@@ -20,7 +20,7 @@ var ObjectID = require('mongodb').ObjectID;
 
 module.exports = function(config) {
 
-  var url = "mongodb://104.197.123.79:27017/main";
+  var url = "mongodb://user:password@ds033113.mongolab.com:33113/main";
   var collectionName = "songs";
 
 
