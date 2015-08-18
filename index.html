@@ -11,10 +11,10 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+   
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -34,7 +34,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#myModal">About</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -43,6 +43,44 @@
     <div class="logo"></div>
     <div id="map"></div>
     <div id="player" class="sc-player"></div>
+    
+    <div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><b>Potatoes with Attitude</b></h4>
+        <h5 class="modal-title"><b>The Soundtrack to your Journey</b></h5>
+      </div>
+      <div class="modal-body">
+        <p>
+            
+            <b>How it works:</b><br/> Based on your location, we play a unique song to represent where you are.  When you move to a new location, your soundtrack continues with a new song.<br/><br/>
+Great for long runs, bike rides, or car trips.<br/><br/>
+
+To start your soundtrack,<br/>
+To pause, press the pause button.
+            
+        </p>
+        <p>
+            
+            <b>Team:</b><br/>
+            Akshay "The Russian Banana" Chalana<br/>
+            Cesar "The Purple Majesty" Vargas<br/>
+            Andrew "The Golden Russet" Luo<br/>
+            Evan "The Yukon Gold" Blajev<br/>
+            Marisa "The Jewel Yam" Yamasaki<br/>
+            Aaron "The Petite Potato" Johnston<br/>
+        
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    
     <script>
 // Note: This example requires that you consent to location sharing when
 // prompted by your browser. If you see the error "The Geolocation service
