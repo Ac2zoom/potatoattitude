@@ -41,7 +41,7 @@ module.exports = {
   },
 
   mongodb: {
-    url: ' mongodb://user:password@ds033113.mongolab.com:33113/main',
+    url: 'mongodb://user:password@ds033113.mongolab.com:33113/main',
     collection: 'songs'
   }
 };

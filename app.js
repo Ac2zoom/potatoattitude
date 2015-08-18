@@ -33,17 +33,6 @@ app.use(bodyParser.urlencoded());
 var model = require("./model-mongodb")(config);
 app.use('/api', require('./api')(model));
 
-function create(data, cb) {
-    model.getCollection(function(err, collection) {
-      if (err) return cb(err);
-      collection.insert(data, {w: 1}, function(err, result) {
-        if (err) return cb(err);
-        var item = model.fromMongo(result.ops);
-        cb(null, item);
-      });
-    });
-  }
-
 function handleRpcError(err, res) {
     if (err.code == 404) return res.status(404);
     res.status(500).json({
@@ -63,7 +52,18 @@ function read(req, cb) {
           code: 404,
           message: "Not found"
         });
-        cb(null, fromMongo(result));
+        cb(null, model.fromMongo(result));
+      });
+    });
+  }
+
+function create(data, cb) {
+    model.getCollection(function(err, collection) {
+      if (err) return cb(err);
+      collection.insert(data, {w: 1}, function(err, result) {
+        if (err) return cb(err);
+        var item = model.fromMongo(result.ops);
+        cb(null, item);
       });
     });
   }
@@ -76,7 +76,7 @@ app.use('/static', express.static('app'));
 
 
 app.post('/post_location', function(req, res) {
-  var document = {song: req.body.song, artist: req.body.artist, loc:[req.body.lat, req.body.lng]};
+  var document = {song: req.body.song, artist: req.body.artist, loc: [req.body.lat, req.body.lng]};
   create(document, function(err, entity) {
       if (err) return handleRpcError(err, res);
       res.json(entity);
@@ -84,7 +84,7 @@ app.post('/post_location', function(req, res) {
 });
 
 app.post('/play', function(req, res) {
-  res.json(read(req));
+    res.json(read(req));
 });
 
 var server = app.listen(process.env.PORT || '8080', '0.0.0.0', function() {

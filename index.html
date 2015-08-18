@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>Geolocation</title>
@@ -50,9 +51,6 @@
     <div class="logo"></div>
     <div id="map"></div>
     <div id="player" class="sc-player"></div>
-<<<<<<< HEAD
-      <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
-=======
     
     <div class="modal fade" id="myModal">
   <div class="modal-dialog">
@@ -91,7 +89,6 @@ To pause, press the pause button.
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
     
->>>>>>> origin/master
     <script>
 // Note: This example requires that you consent to location sharing when
 // prompted by your browser. If you see the error "The Geolocation service
@@ -113,7 +110,7 @@ function initMap() {
             lng: position.coords.longitude
           };
           infoWindow.setPosition(pos);
-          infoWindow.setContent("<form action='http://0.0.0.0:8080/post_location' method='POST'>Radius:<br><input type='text' name='radius' value='0'><br>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>");
+          infoWindow.setContent("<button onclick='play(" + [pos.lat, pos.lng] + ")>Play</button><form action='http://0.0.0.0:8080/post_location' method='POST'>Radius:<br><input type='text' name='radius' value='0'><br>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>");
           map.setCenter(pos);
         }, function() {
           handleLocationError(true, infoWindow, map.getCenter());
@@ -125,7 +122,7 @@ function initMap() {
           };
 
           infoWindow.setPosition(pos);
-          infoWindow.setContent("<button onclick='play(" + [pos.lat, pos.lng] + ")'>Play</button><form action='http://0.0.0.0:8080/post_location' method='POST'>Radius:<br><input type='text' name='radius' value='0'><br>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>");
+          infoWindow.setContent("<button onclick='play(" + [pos.lat, pos.lng] + ")>Play</button><form action='http://0.0.0.0:8080/post_location' method='POST'>Radius:<br><input type='text' name='radius' value='0'><br>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>");
           map.setCenter(pos);
         }, function() {
           handleLocationError(true, infoWindow, map.getCenter());
@@ -147,35 +144,35 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"
         async defer>
     </script>
-      <script>
+    <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+    <script>
       $(document).ready(function () {
-                // initialize client with app credentials
-                SC.initialize({
-                  client_id: 'd410340c90fb87c151be6d020174723a',
-                  redirect_uri: 'http://localhost:3333/callback.html'
-                });
-play = function(pos) {
-          $.post('/play', pos, function(res) {
-              SC.get('/tracks', { q: res.song + res.artist, license: 'cc-by-sa' }, function(tracks) {
-                  console.log(tracks);
-
-                  SC.oEmbed(tracks[0].uri, { auto_play: true }, function(oEmbed) {
-                    console.log('oEmbed response: ', oEmbed);
-                    $('#player').html(oEmbed.html);
-                  });
-                });
+        // initialize client with app credentials
+        SC.initialize({
+          client_id: 'd410340c90fb87c151be6d020174723a',
+          redirect_uri: 'http://localhost:3333/callback.html'
+        });
+        play = function(pos) {
+            console.log("hello");
+            $.post('/play', pos, function(res) {
+        // initiate auth popup
+        SC.connect(function() {
+          SC.get('/me', function(me) {
+            alert('Hello, ' + me.username);
           });
-      }
-        window.play = play;
-                // initiate auth popup
-//                SC.connect(function() {
-//                  SC.get('/me', function(me) {
-//                    alert('Hello, ' + me.username);
-//                  });
-//                });
+        });
 
-                
-              })
-      </script>
+        SC.get('/tracks', { q: res.song + res.artist, license: 'cc-by-sa' }, function(tracks) {
+          console.log(tracks);
+
+          SC.oEmbed(tracks[0].uri, { auto_play: true }, function(oEmbed) {
+            console.log('oEmbed response: ', oEmbed);
+            $('#player').html(oEmbed.html);
+          });
+        });
+      });
+        }
+        window.play = play;
+    </script>
   </body>
 </html>
