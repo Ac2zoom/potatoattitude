@@ -33,12 +33,7 @@ function initMap() {
           };
 
           infoWindow.setPosition(pos);
-<<<<<<< HEAD
-          infoWindow.setContent("<form action='/post_location' method='POST'>Radius:<br><input type='text' name='radius' value='0'><br>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>"
-      );
-=======
           infoWindow.setContent("Location found.");
->>>>>>> e46a6c4af76ab1c2452699672a8398e3746c19bd
           map.setCenter(pos);
           $.post("/current_location", {location: pos});
         }, function() {
@@ -61,21 +56,7 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
       }
-<<<<<<< HEAD
-=======
       infoWindow.setPosition(pos);
-      infoWindow.setContent("<form action='/post_location' method='POST'>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>"
-      );
-      map.setCenter(pos);
-      $.post("/current_location", {location: pos});
-    }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
->>>>>>> e46a6c4af76ab1c2452699672a8398e3746c19bd
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
