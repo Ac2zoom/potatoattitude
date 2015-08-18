@@ -28,7 +28,8 @@ var model = "./model-mongodb";
 app.use('/api', require('./api')(model));
 
 app.get('/', function(req, res) {
-  res.render('hello', "index.html");
+  // res.render('hello', "index.html");
+  res.sendFile(__dirname + '/index.html');
 });
 app.use('/static', express.static('app'));
 
