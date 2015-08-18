@@ -21,6 +21,9 @@ var app = express();
 /* Include the app engine handlers to respond to start, stop, and health checks. */
 app.use(require('./lib/appengine-handlers'));
 
+var model = "./model-mongodb";
+app.use('/', require('./crud')(model));
+app.use('/api', require('./api')(model));
 
 // [START hello_world]
 /* Say hello! */
@@ -29,8 +32,11 @@ app.get('/', function(req, res) {
 });
 // [END hello_world]
 
-app.post('/current_location', function(req, res) {
-  
+app.post('/post_location', function(req, res) {
+  model.create(req.body, function(err, entity) {
+      if (err) return handleRpcError(err, res);
+      res.json(entity);
+    });
 
 // [START server]
 /* Start the server */
