@@ -25,7 +25,7 @@ app.use(require('./lib/appengine-handlers'));
 // [START hello_world]
 /* Say hello! */
 app.get('/', function(req, res) {
-  res.status(200).send("Hello, world!");
+  res.status(200).send("Hello, world! From Git!!!");
 });
 // [END hello_world]
 
