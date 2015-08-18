@@ -37,7 +37,7 @@ app.post('/post_location', function(req, res) {
       if (err) return handleRpcError(err, res);
       res.json(entity);
     });
-
+});
 // [START server]
 /* Start the server */
 var server = app.listen(process.env.PORT || '8080', '0.0.0.0', function() {
