@@ -12,16 +12,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-   
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-=======
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
->>>>>>> origin/master
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -45,7 +41,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <button type="button" class="btn btn-primary navbar-btn"><i class="fa fa-plus-square"></i></button>
+              <button type="button" class="btn btn-primary navbar-btn" id="addButton"><i class="fa fa-plus-square"></i></button>
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -113,7 +109,6 @@ function initMap() {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-
           infoWindow.setPosition(pos);
           infoWindow.setContent("<form action='http://0.0.0.0:8080/post_location' method='POST'>Radius:<br><input type='text' name='radius' value='0'><br>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>");
           map.setCenter(pos);
