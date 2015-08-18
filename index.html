@@ -32,9 +32,8 @@ function initMap() {
             lng: position.coords.longitude
           };
 
-<<<<<<< HEAD
           infoWindow.setPosition(pos);
-          infoWindow.setContent('Location found.');
+          infoWindow.setContent("<form action='/post_location' method='POST'>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>");
           map.setCenter(pos);
           $.post("/current_location", {location: pos});
         }, function() {
@@ -47,7 +46,7 @@ function initMap() {
           };
 
           infoWindow.setPosition(pos);
-          infoWindow.setContent('Location found.');
+          infoWindow.setContent("<form action='/post_location' method='POST'>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>");
           map.setCenter(pos);
           $.post("/current_location", {location: pos});
         }, function() {
@@ -57,9 +56,8 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
       }
-=======
       infoWindow.setPosition(pos);
-      infoWindow.setContent("<form action='/post_location' method='POST'>Radius:<br><input type='text' name='radius' value='0'><br>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>"
+      infoWindow.setContent("<form action='/post_location' method='POST'>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>"
       );
       map.setCenter(pos);
       $.post("/current_location", {location: pos});
@@ -70,7 +68,6 @@ function initMap() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
->>>>>>> origin/master
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -84,7 +81,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"
         async defer>
     </script>
-    <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+    <!-- <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
     <script>
       $(document).ready(function () {
         // initialize client with app credentials
@@ -109,6 +106,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
           });
         });
       })
-    </script>
+    </script> -->
   </body>
 </html>
