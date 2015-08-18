@@ -4,13 +4,94 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="/static/css/main.css">
     <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
   </head>
   <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="static/images/potatoes.png" alt=""/></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="#" data-toggle="modal" data-target="#myModal">About</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <button type="button" class="btn btn-primary navbar-btn" id="addButton"><i class="fa fa-plus-square"></i></button>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="logo"></div>
     <div id="map"></div>
     <div id="player" class="sc-player"></div>
+<<<<<<< HEAD
       <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+=======
+    
+    <div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><b>Potatoes with Attitude</b></h4>
+        <h5 class="modal-title"><b>The Soundtrack to your Journey</b></h5>
+      </div>
+      <div class="modal-body">
+        <p>
+            
+            <b>How it works:</b><br/> Based on your location, we play a unique song to represent where you are.  When you move to a new location, your soundtrack continues with a new song.<br/><br/>
+Great for long runs, bike rides, or car trips.<br/><br/>
+
+To start your soundtrack,<br/>
+To pause, press the pause button.
+            
+        </p>
+        <p>
+            
+            <b>Team:</b><br/>
+            Akshay "The Russian Banana" Chalana<br/>
+            Cesar "The Purple Majesty" Vargas<br/>
+            Andrew "The Golden Russet" Luo<br/>
+            Evan "The Yukon Gold" Blajev<br/>
+            Marisa "The Jewel Yam" Yamasaki<br/>
+            Aaron "The Petite Potato" Johnston<br/>
+        
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    
+>>>>>>> origin/master
     <script>
 // Note: This example requires that you consent to location sharing when
 // prompted by your browser. If you see the error "The Geolocation service
@@ -31,7 +112,6 @@ function initMap() {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-
           infoWindow.setPosition(pos);
           infoWindow.setContent("<form action='http://0.0.0.0:8080/post_location' method='POST'>Radius:<br><input type='text' name='radius' value='0'><br>Song:<br><input type='text' name='song' value='Dont Stop Believing'><br>Artist:<br><input type='text' name='artist' value='Journey'><br><br><input type='submit' value='Submit'><br>Current Latitude:<input type='text' name='position' value=" + pos.lat + "><br>Current Longitude:<input type='text' name='position' value=" + pos.lng + "></form>");
           map.setCenter(pos);
