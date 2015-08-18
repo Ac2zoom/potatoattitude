@@ -18,6 +18,10 @@ api_version: 1
 module: default
 # [END runtime]
 
+skip_files:
+- ^\.git(/.*)?$
+- ^node_modules(/.*)?$
+
 # [START resources]
 resources:
   cpu: .5

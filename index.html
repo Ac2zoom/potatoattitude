@@ -3,21 +3,14 @@
   <head>
     <title>Geolocation</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="app/css/main.css">
     <meta charset="utf-8">
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-    </style>
+
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
   </head>
   <body>
     <div id="map"></div>
+    <div id="player" class="sc-player"></div>
     <script>
 // Note: This example requires that you consent to location sharing when
 // prompted by your browser. If you see the error "The Geolocation service
@@ -63,6 +56,32 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"
         async defer>
+    </script>
+    <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+    <script>
+      $(document).ready(function () {
+        // initialize client with app credentials
+        SC.initialize({
+          client_id: 'd410340c90fb87c151be6d020174723a',
+          redirect_uri: 'http://localhost:3333/callback.html'
+        });
+
+        // initiate auth popup
+        SC.connect(function() {
+          SC.get('/me', function(me) {
+            alert('Hello, ' + me.username);
+          });
+        });
+
+        SC.get('/tracks', { q: 'buskers', license: 'cc-by-sa' }, function(tracks) {
+          console.log(tracks);
+
+          SC.oEmbed(tracks[0].uri, { auto_play: true }, function(oEmbed) {
+            console.log('oEmbed response: ', oEmbed);
+            $('#player').html(oEmbed.html);
+          });
+        });
+      })
     </script>
   </body>
 </html>
